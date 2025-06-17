@@ -12,24 +12,26 @@ echo =====================================
 echo.
 echo  请选择要执行的操作:
 echo.
-echo  1. 查看历史记录 (history)
+echo  1. 查看历史发生了什么 (history)
 echo  2. 查看日报 ()
 echo  3. 查看天气 (weather)
 echo  4. 停止任务 (stop)
-echo  5. 退出脚本
+echo  5. 掘金签到
+echo  6. 退出脚本
 echo.
 echo =====================================
 echo.
 
 REM 获取用户输入
-set /p choice="请输入选项编号 (1-5): "
+set /p choice="请输入选项编号 (1-6): "
 
 REM 根据用户输入跳转到不同操作
 if "%choice%"=="1" goto action_history
 if "%choice%"=="2" goto action_
 if "%choice%"=="3" goto action_weather
 if "%choice%"=="4" goto action_stop
-if "%choice%"=="5" goto exit_script
+if "%choice%"=="5" goto action_juejin
+if "%choice%"=="6" goto exit_script
 
 REM 处理无效输入
 echo.
@@ -74,6 +76,16 @@ echo.
 echo 正在执行: curl %baseURL%?action=stop
 echo.
 curl "%baseURL%?action=stop"
+echo.
+echo --- 操作完成 ---
+pause
+goto menu
+
+:action_juejin
+echo.
+echo 正在执行: curl https://juejin.lzqai.online/execute
+echo.
+curl "https://juejin.lzqai.online/execute"
 echo.
 echo --- 操作完成 ---
 pause
